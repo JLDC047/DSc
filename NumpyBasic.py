@@ -50,16 +50,51 @@ print(np.random.permutation(arange))"""
 "print(np.random.randint(3,23,7))"
 
 random = np.random.randint(1,100,(3,4))
-print(random)
+"print(random)"
 
 #reshape array
-print(random.reshape(2,6))
+"print(random.reshape(2,6))"
 
 #sort
 unsorted = np.arange(1,11)
 unsorted = np.random.permutation(unsorted)
-print(unsorted)
+"print(unsorted)"
 sorted = np.sort(unsorted)
-print(sorted)
+"print(sorted)"
+
+#array slicing
+pre_slice = np.random.randint(1,100,10)
+"print(pre_slice)"
+"""print(pre_slice[1:7])
+print(pre_slice[:5])
+print(pre_slice[6:])
+print(pre_slice[::3])
+print(pre_slice[::-1])"""
+
+pre_slice2 = np.random.randint(1,100,(5,6))
+"print(pre_slice2)"
+"print(pre_slice2[2:5,0:2])"
+
+#conditional slicing
+"""print(pre_slice2[pre_slice2 % 2 == 0])
+print(pre_slice2[pre_slice2 >= 50])"""
+
+#selection by indices
+"print(pre_slice[[2,0,7,9,4]])"
+
+#arithmetic operation
+a1 = np.arange(1,9)
+a2 = np.arange(3,11)
+"""print(a1,"+",a2,"=", a1 + a2)"""
+
+a12d = np.random.randint(1,10,(3,4))
+a22d = np.random.randint(1,10,(3,4))
+"""print(a12d,"+",a22d,"=", a12d + a22d)"""
+
+#evaluating expression
+def expression_solve(x):
+    return 2*x+3
+to10 = np.arange(1,11)
+print(expression_solve(to10))
 
 
