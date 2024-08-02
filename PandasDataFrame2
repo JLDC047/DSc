@@ -1,0 +1,70 @@
+import pandas as pd
+
+dictionary = {"Name":["Alex","Bailey","Camilla"], "Age":[16,7,21],"City":["NYC","Yorkshire","Paris"]}
+data_frame = pd.DataFrame(dictionary)
+
+print(data_frame, type(data_frame))
+
+#number of rows and columns
+print(data_frame.shape)
+
+#accessing a single column
+print(data_frame["City"])
+print(data_frame["Name"])
+
+#statistic operations on column
+print(data_frame["Age"].mean())
+
+#loading data from a file
+titanticdf = pd.read_csv("titanic.csv")
+print(titanticdf.info())
+print(titanticdf.describe())
+
+print(titanticdf.head())
+print(titanticdf.tail())
+
+print(titanticdf["Survived"].head(10))
+print(titanticdf["Survived"].value_counts())
+
+#selecting multiple columns
+print(titanticdf[["Name","Age","Survived"]])
+
+#filtering rows
+print(titanticdf[titanticdf["Age"]<18])
+print(titanticdf[(titanticdf["Age"]>18) & (titanticdf["Pclass"]==1)])
+print(titanticdf[(titanticdf["Pclass"]==1) | (titanticdf["Fare"]>=30)])
+
+#index based slicing
+print(titanticdf.iloc[2:7,1:3])
+
+#conditional slicing
+print(titanticdf.loc[titanticdf["Age"]<18,["Name","Pclass"]])
+
+#changing values
+print(titanticdf.head(3))
+
+titanticdf.loc[0:2,["Name"]] = ["a","b","c"]
+
+print(titanticdf.head(3))
+
+#storaging data
+titanticdf.to_csv("modified_titantic.csv")
+
+#adding new columns
+titanticdf["DoubleFare"] = titanticdf["Fare"] * 2
+print(titanticdf.head(5))
+
+#renaming columns
+titanticdf.rename(columns={"Name":"name","Age":"How Many Years Closer to Death"})#use inplace=True to affect the dataframe directly
+print(titanticdf.head(5))
+
+#grouping data
+PclassGroup = titanticdf[["Pclass","Name","Age"]].groupby("Pclass")
+print(PclassGroup.max())
+
+# Task - Get the mean ticket price for each of sex and cabin class combination
+group = titanticdf.groupby(["Sex","Pclass"])
+print(group["Fare"].mean())
+
+#sorting data
+print(titanticdf.sort_values(by="Age"))
