@@ -43,7 +43,7 @@ print(titanticdf.loc[titanticdf["Age"]<18,["Name","Pclass"]])
 #changing values
 print(titanticdf.head(3))
 
-titanticdf.loc[0:2,["Name"]] = ["a","b","c"]
+#titanticdf.loc[0:2,["Name"]] = ["a","b","c"]
 
 print(titanticdf.head(3))
 
@@ -68,3 +68,19 @@ print(group["Fare"].mean())
 
 #sorting data
 print(titanticdf.sort_values(by="Age"))
+
+#aggregated functions on multiple columns
+print(titanticdf[["Fare","Age"]].mean())
+
+print(titanticdf.agg({"Age":["min","max"], "Fare":["min","max","median","mean"]}))
+
+#operation on text data
+    #change name to lowercase
+series = titanticdf["Name"].str.lower()
+print(series)
+split = series.str.split().str.get(-1)
+print(split)
+
+#replacing values
+titanticdf["Sex"].replace({"male":"M", "female":"F"},inplace=True)
+print(titanticdf.head(10))
