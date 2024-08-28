@@ -25,3 +25,13 @@ plt.stackplot(years,y21,y22,y23,y24)
 plt.xticks(ticks=years,labels=years)
 plt.show()
 
+#subplots
+x = np.arange(-10,11)
+y1 = x**2
+y2 = x**3
+plt.figure()
+plt.subplot(221)
+plt.plot(x,y1)
+plt.subplot(224)
+plt.plot(x,y2)
+plt.show()
