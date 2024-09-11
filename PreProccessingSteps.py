@@ -37,3 +37,12 @@ print(X_train)
 print(X_test)
 print(y_train)
 print(y_test)
+
+#scaling the data, standard scaler
+from sklearn.preprocessing import StandardScaler
+SS = StandardScaler()
+X_train.iloc[:,:2] = SS.fit_transform(X_train.iloc[:,:2])
+print(X_train)
+X_test.iloc[:,:2] = SS.fit_transform(X_test.iloc[:,:2])
+print(X_test)
+
